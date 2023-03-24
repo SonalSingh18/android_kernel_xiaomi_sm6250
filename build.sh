@@ -82,9 +82,4 @@ BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
 
-echo "**** Uploading your zip now ****"
-if command -v curl &> /dev/null; then
-curl -T $FINAL_KERNEL_ZIP temp.sh
-else
 echo "Zip: $FINAL_KERNEL_ZIP"
-fi
