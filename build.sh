@@ -5,7 +5,25 @@
 ## Copy this script inside the kernel directory
 KERNEL_DEFCONFIG=cust_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
-FINAL_KERNEL_ZIP=Etherious-miatoll-$(date '+%Y%m%d').zip
+
+# Find kernel version
+KERNEL_VERSION="$( cat Makefile | grep VERSION | head -n 1 | sed "s|.*=||1" | sed "s| ||g" )"
+KERNEL_PATCHLEVEL="$( cat Makefile | grep PATCHLEVEL | head -n 1 | sed "s|.*=||1" | sed "s| ||g" )"
+KERNEL_SUBLEVEL="$( cat Makefile | grep SUBLEVEL | head -n 1 | sed "s|.*=||1" | sed "s| ||g" )"
+
+FINAL_KERNEL_VERSION=${KERNEL_VERSION}.${KERNEL_PATCHLEVEL}.${KERNEL_SUBLEVEL}
+
+FINAL_KERNEL_ZIP=Etherious-${FINAL_KERNEL_VERSION}-miatoll-$(date '+%d%m%Y').zip
+
+[[ -z "$KERNEL_VERSION" ]] && echo -e "Error!" && exit 1
+[[ -z "$KERNEL_PATCHLEVEL" ]] && echo -e "Error!" && exit 1
+[[ -z "$KERNEL_SUBLEVEL" ]] && echo -e "Error!" && exit 1
+
+echo -e "$blue***********************************************"
+echo "         ETHERIOUS KERNEL          "
+echo -e "***********************************************$nocol"
+echo YOUR ETHERIOUS KERNEL VERSION IS "${KERNEL_VERSION}.${KERNEL_PATCHLEVEL}.${KERNEL_SUBLEVEL}"
+
 export PATH="$HOME/cosmic/bin:$PATH"
 export ARCH=arm64
 export SUBARCH=arm64
