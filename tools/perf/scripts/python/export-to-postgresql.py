@@ -171,7 +171,7 @@ import datetime
 #		SELECT * FROM samples_view WHERE event = 'transactions' AND branch_type_name = 'transaction abort';
 #
 # To print a call stack requires walking the call_paths table.  For example this python script:
-#   #!/usr/bin/python2
+#   #!/usr/bin/python3
 #
 #   import sys
 #   from PySide.QtSql import *
@@ -187,14 +187,14 @@ import datetime
 #           if not db.open():
 #                   raise Exception("Failed to open database " + dbname + " error: " + db.lastError().text())
 #           query = QSqlQuery(db)
-#           print "    id          ip  symbol_id  symbol                          dso_id  dso_short_name"
+#           print("    id          ip  symbol_id  symbol                          dso_id  dso_short_name")
 #           while call_path_id != 0 and call_path_id != 1:
 #                   ret = query.exec_('SELECT * FROM call_paths_view WHERE id = ' + str(call_path_id))
 #                   if not ret:
 #                           raise Exception("Query failed: " + query.lastError().text())
 #                   if not query.next():
 #                           raise Exception("Query failed")
-#                   print "{0:>6}  {1:>10}  {2:>9}  {3:<30}  {4:>6}  {5:<30}".format(query.value(0), query.value(1), query.value(2), query.value(3), query.value(4), query.value(5))
+#                   print("{0:>6}  {1:>10}  {2:>9}  {3:<30}  {4:>6}  {5:<30}".format(query.value(0), query.value(1), query.value(2), query.value(3), query.value(4), query.value(5)))
 #                   call_path_id = query.value(6)
 
 from PySide.QtSql import *

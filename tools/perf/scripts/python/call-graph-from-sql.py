@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # call-graph-from-sql.py: create call-graph from sql database
 # Copyright (c) 2014-2017, Intel Corporation.
 #
@@ -292,7 +292,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
 	if (len(sys.argv) < 2):
-		print >> sys.stderr, "Usage is: call-graph-from-sql.py <database name>"
+		print("Usage is: call-graph-from-sql.py <database name>", file=sys.stderr)
 		raise Exception("Too few arguments")
 
 	dbname = sys.argv[1]
