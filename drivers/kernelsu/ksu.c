@@ -47,18 +47,18 @@ int __init kernelsu_init(void)
 
 	ksu_core_init();
 
-	ksu_workqueue = alloc_workqueue("kernelsu_work_queue", 0, 0);
+	ksu_workqueue = alloc_ordered_workqueue("kernelsu_work_queue", 0);
 
 	ksu_allowlist_init();
 
 	ksu_uid_observer_init();
 
-//#ifdef CONFIG_KPROBES
+#ifdef CONFIG_KPROBES
 	ksu_enable_sucompat();
 	ksu_enable_ksud();
-//#else
-//	pr_alert("KPROBES is disabled, KernelSU may not work, please check https://kernelsu.org/guide/how-to-integrate-for-non-gki.html");
-//#endif
+#else
+	pr_alert("KPROBES is disabled, KernelSU may not work, please check https://kernelsu.org/guide/how-to-integrate-for-non-gki.html");
+#endif
 
 	return 0;
 }
