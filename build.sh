@@ -41,8 +41,8 @@ DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 TANGGAL=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME=Forza
-FINAL_ZIP=${ZIPNAME}-kernel-${DEVICE}-${TANGGAL}.zip
+ZIPNAME=RedCherry
+FINAL_ZIP=${ZIPNAME}-kernel-v${KERVER}-${DEVICE}-${TANGGAL}.zip
 
 ##----------------------------------------------------------##
 # Specify compiler.
@@ -97,7 +97,7 @@ function cloneTC() {
 	PATH="${KERNEL_DIR}/aosp-clang/bin:${KERNEL_DIR}/gcc/bin:${KERNEL_DIR}/gcc32/bin:${PATH}"
 	fi
         # Clone AnyKernel
-        git clone --depth=1  https://github.com/Abhishek001konni/AnyKernel3.git
+        git clone --depth=1  https://github.com/userariii/AnyKernel3.git
 
 	}
 	
@@ -126,7 +126,7 @@ function exports() {
         
         # KBUILD HOST and USER
         export KBUILD_BUILD_HOST=Linux
-        export KBUILD_BUILD_USER="Lop"
+        export KBUILD_BUILD_USER="CRUECY
         
         # CI
         if [ "$CI" ]
