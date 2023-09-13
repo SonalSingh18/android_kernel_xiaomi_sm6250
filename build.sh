@@ -126,7 +126,7 @@ function exports() {
         
         # KBUILD HOST and USER
         export KBUILD_BUILD_HOST=Linux
-        export KBUILD_BUILD_USER="CRUECY
+        export KBUILD_BUILD_USER="CRUECY"
         
         # CI
         if [ "$CI" ]
